@@ -25,6 +25,10 @@ export default function PostPageHead({ settings, post }: PostPageHeadProps) {
             .url()}
         />
       )}
+      <link
+        href="https://fonts.cdnfonts.com/css/svn-gilroy"
+        rel="stylesheet"
+      ></link>
     </Head>
   )
 }

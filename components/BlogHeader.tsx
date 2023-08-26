@@ -1,8 +1,34 @@
 import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
-
+import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs'
 import styles from './BlogHeader.module.css'
 
+const socialMedia = [
+  {
+    name: 'facebook',
+    url: 'https://www.facebook.com/chus.vn',
+    icon: <BsFacebook size={25} />,
+  },
+  {
+    name: 'instagram',
+    url: 'https://www.instagram.com/chus.vn',
+    icon: <BsInstagram size={25} />,
+  },
+  {
+    name: 'youtube',
+    url: 'https://www.youtube.com/channel/UC9Z3Z0ZJX6Z8Z9Z9Z9Z9Z9Z9',
+    icon: <BsTwitter size={25} />,
+  },
+]
+
+const category = [
+  'Food & Drink',
+  'Heath & Beauty',
+  'Travel',
+  'Gift ideas',
+  'Green lifestyle',
+  'NEWS',
+]
 export default function BlogHeader({
   title,
   description,
@@ -29,13 +55,53 @@ export default function BlogHeader({
 
     case 2:
       return (
-        <header>
-          <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
-            <Link href="/" className="hover:underline">
-              {title}
-            </Link>
-          </h2>
-        </header>
+        <>
+          <header className="flex justify-between items-center pb-8 mb-8 pt-8 border border-1 border-x-0 border-t-0 border-slate-200">
+            <h2 className=" text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter flex items-center">
+              <Link href="/" className="hover:underline">
+                <img
+                  src="https://chus.vn/images/logo-blog.png"
+                  alt="hallo"
+                  width="300"
+                />
+              </Link>
+            </h2>
+
+            <div className="list-style list-none">
+              {socialMedia.map((item) => (
+                <li key={item.name} className="inline-block mr-4">
+                  <a href={item.url}>{item.icon}</a>
+                </li>
+              ))}
+            </div>
+          </header>
+          <div className="flex justify-berween w-full py-2">
+            {category.map((item, index) => (
+              <span
+                key={index}
+                className="cate flex-1 text-center block uppercase font-bold border border-1 border-y-0 border-slate-1  p-5"
+                data-selected={index === 0}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+          <style jsx>{`
+            .cate {
+              background-color: #fff;
+              color: #021c2c;
+              cursor: pointer;
+            }
+            .cate:hover {
+              background-color: #021c2c;
+              color: #edc900;
+            }
+            .cate[data-selected='true'] {
+              background-color: #021c2c;
+              color: #edc900;
+            }
+          `}</style>
+        </>
       )
 
     default:
