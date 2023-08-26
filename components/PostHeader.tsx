@@ -16,6 +16,7 @@ export default function PostHeader(
         <div className="text-lg">
           <Date dateString={date} />
         </div>
+        -<span>6 mins</span>
       </div>
 
       <div className="mb-8 sm:mx-0 md:mb-16">
